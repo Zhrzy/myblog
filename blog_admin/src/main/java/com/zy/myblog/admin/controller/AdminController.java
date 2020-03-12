@@ -35,8 +35,12 @@ public class AdminController {
                 "mogublog",3600);*/
         return ResultUtil.result("success","成功",admin);
     }
+    /** @Author zy
+     * @Description 获取管理员列表
+     * @Param
+     * @return
 
-
+     **/
     @RequestMapping("/getAdminList")
     public String getAdminList(@RequestParam(name = "keyword",required = false) String keyword,
                                @RequestParam(name = "currentPage", required = false, defaultValue = "1") Long currentPage,
