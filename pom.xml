@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!--SpringBoot版本-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.2.RELEASE</version>
+    </parent>
+    <!--项目属性-->
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.zy.myblog</groupId>
+    <artifactId>myblog</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <description>My SpringCloud Blog</description>
+    <modules>
+        <module>blog_eureka</module>
+        <module>blog_xx</module>
+        <module>blog_admin</module>
+        <module>blog_base</module>
+    </modules>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <swagger.version>2.6.1</swagger.version>
+        <swagger.ui.version>2.6.1</swagger.ui.version>
+        <servlet.api.version>3.0-alpha-1</servlet.api.version>
+        <net.sf.json.lib.version>2.4</net.sf.json.lib.version>
+        <alibaba.fastjson.version>1.2.31</alibaba.fastjson.version>
+        <jackson.mapper.asl.version>1.9.13</jackson.mapper.asl.version>
+        <javax.mail.version>1.4</javax.mail.version>
+        <aliyun.java.sdk.dysmsapi.version>1.0.0</aliyun.java.sdk.dysmsapi.version>
+        <aliyun.java.sdk.core.version>3.2.5</aliyun.java.sdk.core.version>
+        <mybatis.plus.boot.starter.version>3.1.2</mybatis.plus.boot.starter.version>
+        <jjwt.version>0.7.0</jjwt.version>
+        <druid.version>1.1.8</druid.version>
+        <google.code.gson.version>2.7</google.code.gson.version>
+        <lombok.version>1.18.10</lombok.version>
+        <Hutool.version>4.6.4</Hutool.version>
+        <log4j.version>1.2.17</log4j.version>
+        <eureka.version>1.2.3.RELEASE</eureka.version>
+        <startFeign.version>1.4.7.RELEASE</startFeign.version>
+    </properties>
+    <!--版本管理-->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Hoxton.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--阿里连接池-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>1.0.31</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+</project>
