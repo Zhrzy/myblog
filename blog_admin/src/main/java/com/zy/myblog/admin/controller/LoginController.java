@@ -118,8 +118,8 @@ public class LoginController {
                 map.put(SysConf.AVATAR, "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif");
             }
         }*/
-       map.put("avatar","https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif");
-       map.put("name","张勇");
+       map.put("avatar",admin.getAvatar());
+       map.put("name",admin.getNickName());
         //加载这些角色所能访问的菜单页面列表
         //1)获取该管理员所有角色
         List<String> roleUid = new ArrayList<>();
