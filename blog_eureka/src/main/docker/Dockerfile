@@ -1,5 +1,5 @@
 FROM java:8
-ADD blog_eureka_1.0-SNAPSHOT.jar app.jar
+ADD blog_eureka-1.0-SNAPSHOT.jar app.jar
 RUN bash -c 'touch /app.jar'
 EXPOSE 8761
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
