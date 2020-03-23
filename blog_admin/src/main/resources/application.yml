@@ -52,6 +52,7 @@ spring:
     #password: 123456
     username: zy
     password: zhangyong123##
+    #仅用于展示，数据库无价值，请勿使用账号恶意操作数据库
     dbcp2:
       min-idle: 5                                           # 数据库连接池的最小维持连接数
       initial-size: 5                                       # 初始化连接数
