@@ -5,8 +5,8 @@ server:
 eureka:
   client: #客户端注册进eureka服务列表内
     service-url:
-      defaultZone: http://localhost:7001/eureka
-       #defaultZone: http://eureka:7001/eureka #单机模式，服务器端，docker部署第一个eureka表示容器名字
+      #defaultZone: http://localhost:7001/eureka
+       defaultZone: http://eureka:7001/eureka #单机模式，服务器端，docker部署第一个eureka表示容器名字
       #defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
     instance:
       instance-id: blog-admin #注册中心Status属性不显示主机名，自定义名字
@@ -44,14 +44,14 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource            # 当前数据源操作类型
     driver-class-name: com.mysql.cj.jdbc.Driver              # mysql驱动包
-    url: jdbc:mysql://localhost:3306/mogu_blog?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&useSSL=false&serverTimezone=GMT%2B8
+    #url: jdbc:mysql://localhost:3306/mogu_blog?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&useSSL=false&serverTimezone=GMT%2B8
     #服务器端url，mysql5.7表示mysql服务容器名字
     #url: jdbc:mysql://mysql5.7:3306/mogu_blog?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&useSSL=false&serverTimezone=GMT%2B8              # 数据库名称
-    #url: jdbc:mysql://rm-bp1iv12zo818oql20125010.mysql.rds.aliyuncs.com:3306/mogu_blog?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&useSSL=false&serverTimezone=GMT%2B8
-    username: root
-    password: 123456
-    #username: zy
-    #password: zhangyong123##
+    url: jdbc:mysql://rm-bp1iv12zo818oql20125010.mysql.rds.aliyuncs.com:3306/mogu_blog?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&useSSL=false&serverTimezone=GMT%2B8
+    #username: root
+    #password: 123456
+    username: zy
+    password: zhangyong123##
     #仅用于展示，数据库无价值，请勿使用账号恶意操作数据库
     dbcp2:
       min-idle: 5                                           # 数据库连接池的最小维持连接数
