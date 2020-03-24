@@ -2,6 +2,8 @@ package com.zy.myblog.admin.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zy.myblog.admin.config.JwtAudienceConfig;
+import com.zy.myblog.admin.constant.SysConstant;
+import com.zy.myblog.admin.jwt.IpUtils;
 import com.zy.myblog.admin.jwt.JwtTokenUtil;
 import com.zy.myblog.admin.service.AdminService;
 import com.zy.myblog.admin.service.CategoryMenuService;
@@ -64,6 +66,11 @@ public class LoginController {
         if (!passwordEncoder.matches(password,admin.getPassWord())){
             return ResultUtil.result("error","失败密码错误","密码错误");
         }
+        System.out.println("?");
+        if (admin.getStatus()==2){
+            return ResultUtil.result(SysConstant.ERROR, "用户被禁止登陆！", "用户被禁止登陆！");
+        }
+
         QueryWrapper<Role> queryWrapper1  =new QueryWrapper<>();
         queryWrapper1.eq("uid",admin.getRoleUid());
         List<Role> roleList = roleService.list(queryWrapper1);
@@ -92,6 +99,13 @@ public class LoginController {
         token = tokenHead+token;
         Map<Object,Object> map = new HashMap<>();
         map.put("token",token);
+
+        //进行登录相关操作
+        Integer count = admin.getLoginCount() + 1;
+        admin.setLoginCount(count);
+        admin.setLastLoginIp(IpUtils.getIpAddr(request));
+        admin.setLastLoginTime(new Date());
+        admin.updateById();
         return ResultUtil.result("success","登陆成功了",map);
     }
 

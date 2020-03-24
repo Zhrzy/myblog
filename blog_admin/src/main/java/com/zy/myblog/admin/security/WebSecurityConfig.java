@@ -52,11 +52,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new JwtAuthenticationTokenFilter();
     }
 
+    /**
+     * 配置登录验证逻辑
+     */
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService);
     }
-
+    /**
+     * 配置security的控制逻辑
+     */
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
 
