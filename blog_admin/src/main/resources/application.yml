@@ -1,3 +1,72 @@
+#开发环境
+server:
+  port: 8001
+
+#222
+eureka:
+  client: #客户端注册进eureka服务列表内
+    service-url:
+      #defaultZone: http://localhost:7001/eureka
+      defaultZone: http://eureka:7001/eureka #单机模式，服务器端，docker部署第一个eureka表示容器名字
+      #defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+    instance:
+      instance-id: blog-admin #注册中心Status属性不显示主机名，自定义名字
+      prefer-ip-address: true     #访问路径可以显示IP地址
+
+mybatis-plus:
+  config-location: classpath:mybatis/mybatis.cfg.xml
+  type-aliases-package: com.zy.myblog.xx.entity
+  mapper-locations:
+  - classpath:mybatis/mapper/**/*.xml
+  global-config:
+    db-config:
+      #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+      id-type: UUID
+      #字段策略 IGNORED:"忽略判断",NOT_NULL:"非 NULL 判断"),NOT_EMPTY:"非空判断"
+      field-strategy: NOT_EMPTY
+      #驼峰下划线转换
+      column-underline: true
+      #数据库大写下划线转换
+      #capital-mode: true
+      #逻辑删除配置
+      logic-delete-value: 0
+      logic-not-delete-value: 1
+      db-type: mysql
+      #刷新mapper 调试神器
+      refresh: true
+      # 原生配置
+      configuration:
+        map-underscore-to-camel-case: true
+        cache-enabled: false
+
 spring:
-  profiles:
-    active: dev
+  application:
+    name: blog-admin  #服务名字 若为集群，全部统一为一样的
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource            # 当前数据源操作类型
+    driver-class-name: com.mysql.cj.jdbc.Driver              # mysql驱动包
+    #url: jdbc:mysql://localhost:3306/mogu_blog?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&useSSL=false&serverTimezone=GMT%2B8
+    #服务器端url，mysql5.7表示mysql服务容器名字
+    #url: jdbc:mysql://mysql5.7:3306/mogu_blog?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&useSSL=false&serverTimezone=GMT%2B8              # 数据库名称
+    url: jdbc:mysql://rm-bp1iv12zo818oql20125010.mysql.rds.aliyuncs.com:3306/mogu_blog?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&useSSL=false&serverTimezone=GMT%2B8
+    #username: root
+    #password: 123456
+    username: zy
+    password: zhangyong123##
+    #仅用于展示，数据库无价值，请勿使用账号恶意操作数据库
+    dbcp2:
+      min-idle: 5                                           # 数据库连接池的最小维持连接数
+      initial-size: 5                                       # 初始化连接数
+      max-total: 5                                          # 最大连接数
+      max-wait-millis: 2000
+
+#自定义jwt配置
+jwtaudience:
+  clientId: 098f6bcd4621d373cade4e832627b4f6 #id
+  name: mogublog #名字
+  expiresSecond: 3600   #1个小时间
+
+#jwt配置
+tokenHead: bearer
+tokenHeader: Authorization
+isRememberMeExpiresSecond: 259200 #记住账号为3天有效
